@@ -16,7 +16,7 @@ const Weather = ({ weatherInfo }) => {
   };
   return (
     <>
-      <main className="flex flex-col gap-4 bg-black w-80">
+      <main className="flex flex-col gap-6 w-80">
         <section className="flex flex-row justify-between">
           <p>Weather app</p>
           <div>
@@ -32,9 +32,9 @@ const Weather = ({ weatherInfo }) => {
         </section>
         <section>
           
-          <img className="relative  w-full" src="/images/bgapp.png" alt="imagebg app" />
-          <div className="absolute top-[200px] right-[40px] flex flex-col bg-transparent m-1 w-72">
-            <section className="flex items-center justify-between h-20 gap-6">
+          <img className="w-full" src="/images/bgapp.png" alt="imagebg app" />
+          <div className="relative top-[-190px] right-[-20px] flex flex-col bg-red m-1 w-72 gap-2">
+            <section className="flex items-center justify-between h-10 gap-10">
               <span className="text-5xl">
                 {isCelsius
                   ? convertCelsius(weatherInfo?.main.temp) + "°"
@@ -49,9 +49,9 @@ const Weather = ({ weatherInfo }) => {
               </span>
             </section>
             <section className="flex items-start gap-1 flex-col">
-              <span>Wind{}</span>
-              <span>Clouds{}</span>
-              <span>Presure{}</span>
+              <span className="flex flex-row gap-2">Wind:{weatherInfo?.wind.speed}[m/s]</span>
+              <span className="flex gap-1">Clouds:{weatherInfo?.clouds.all}</span>
+              <span className="flex gap-1">Presure:{weatherInfo?.main.pressure}[atm]</span>
 
             </section>
             <section className="flex items-center justify-between">
@@ -63,7 +63,7 @@ const Weather = ({ weatherInfo }) => {
           </div>
         </section>
         <section>
-          <button className="m-2 bg-[#7D69F1] shadow-[#00000040] shadow-lg" onClick={handleConvertTemp}>Change to °F </button>
+          <button className="m-2 bg-[#7D69F1] shadow-[#00000040] shadow-lg" onClick={handleConvertTemp}>Change to {(isCelsius)?("°F"):("°C")} </button>
         </section>
       </main>
     </>
